@@ -1,0 +1,56 @@
+{
+  "id": "probation_interview_application_notification_1",
+  "pluginKey": "@official-plugins/send-feishu-message",
+  "pluginVersion": "1.0.30",
+  "name": "转正面试申请通知",
+  "description": "发送飞书消息通知相关人员有新人转正面试申请",
+  "icon": "",
+  "paramsSchema": {
+    "type": "object",
+    "properties": {
+      "entry_date": {
+        "type": "string",
+        "description": "新人入职日期"
+      },
+      "current_stage": {
+        "type": "string",
+        "description": "新人当前阶段"
+      },
+      "application_url": {
+        "type": "string",
+        "description": "转正申请跳转链接"
+      },
+      "newcomer_name": {
+        "type": "string",
+        "description": "新人姓名"
+      }
+    },
+    "required": [
+      "newcomer_name",
+      "entry_date",
+      "current_stage",
+      "application_url"
+    ]
+  },
+  "formValue": {
+    "content": "### 转正面试申请提醒\n\n**新人姓名**：{{input.newcomer_name}}\n**入职日期**：{{input.entry_date}}\n**当前阶段**：{{input.current_stage}}\n\n请及时处理相关面试安排。",
+    "receiverUserList": [
+      "1864797645413527"
+    ],
+    "receiverGroupList": [],
+    "sender": "bot",
+    "buttons": [
+      {
+        "text": "查看申请",
+        "url": "{{input.application_url}}",
+        "style": "primary"
+      }
+    ],
+    "title": {
+      "title": "转正面试申请通知"
+    }
+  },
+  "createdAt": 1789034924732,
+  "updatedAt": 1789034924732,
+  "createdBy": 7604806397561244886
+}

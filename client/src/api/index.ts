@@ -1,0 +1,9 @@
+export * as newcomer from './newcomer';
+export * as challenge from './challenge';
+export * as course from './course';
+export * as coachingReview from './coaching-review';
+export * as opportunity from './opportunity';
+export * as dashboard from './dashboard';
+export * as roleManager from './roleManager';
+export * as knowledgeBase from './knowledgeBase';
+export * as stage from './stage';

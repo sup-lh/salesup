@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Sora:wght@100..800&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./tailwind-theme.css";
+@import "./typography.css";
+
+@source "../../node_modules/streamdown/dist/*.js";
+@config "../../tailwind.config.ts";
+
+/* shadcn primitives rely on a neutral default border token. Without this,
+ * Tailwind's bare `border` utility falls back to currentColor (near-black). */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ══════════════════════════════════════════════
+ * 全局基础样式 — 去 AI 味细节
+ * ══════════════════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 背景微纹理 — 暖灰蓝底上的极淡颗粒感 */
+body {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(
+      hsl(0 0% 0% / 0.008) 1px,
+      transparent 1px
+    );
+  background-size: 32px 32px;
+}
+
+/* 自定义滚动条 — 更内敛 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(220 10% 78%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(220 10% 68%);
+}
+
+/* 选中色 — 蓝系 */
+::selection {
+  background: hsl(217 80% 52% / 0.25);
+  color: var(--foreground);
+}
+
+/* 全局过渡 */
+*,
+*::before,
+*::after {
+  transition-property: color, background-color, border-color, box-shadow, opacity;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 禁用 transition 的场景 — 避免页面入场闪烁 */
+.no-prefers-reduced-motion *,
+.preload * {
+  transition: none !important;
+}
+
+/* 普通链接保留全局焦点轮廓，shadcn 控件在组件内管理 focus ring */
+a:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* 侧边栏展开/折叠时禁止内容闪烁 */
+[data-sidebar="collapsible"] .sidebar-content {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(220 20% 35% / 0.3) transparent;
+}

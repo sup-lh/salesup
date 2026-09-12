@@ -1,0 +1,16 @@
+FROM node:22-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --ignore-scripts
+COPY . .
+RUN npm run build:server
+
+FROM node:22-alpine
+WORKDIR /app
+ENV NODE_ENV=production SERVER_HOST=0.0.0.0 SERVER_PORT=3000
+COPY package*.json ./
+RUN npm ci --omit=dev --ignore-scripts
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/server/database/migrations ./server/database/migrations
+COPY --from=build /app/doc/sql ./doc/sql
+CMD ["sh", "-c", "node server/database/migrations/run.mjs && node dist/server/main.js"]

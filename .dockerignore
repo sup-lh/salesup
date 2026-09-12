@@ -1,0 +1,11 @@
+node_modules
+.git
+.agent-memory
+.artifacts
+backups
+logs
+*.tsbuildinfo
+.env*
+doc/*.md
+doc/output
+table.sql
