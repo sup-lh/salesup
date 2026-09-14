@@ -23,11 +23,10 @@ description: 在新克隆的 SalesUp 仓库中判断本机条件，初始化本�
 
 依次检查以下文件，不要根据通用经验猜测项目命令：
 
-1. `AGENTS.md`：项目级协作与 UI 约束。
-2. `README.md`：项目结构和命令入口。
-3. `.env.docker.example`：本地环境变量模板。
-4. `infra/docker-compose.yml`：本地服务、端口、依赖和数据卷。
-5. 本文件：部署决策、执行顺序和验收标准。
+1. `README.md`：项目结构和命令入口。
+2. `.env.docker.example`：本地环境变量模板。
+3. `infra/docker-compose.yml`：本地服务、端口、依赖和数据卷。
+4. 本文件：部署决策、执行顺序和验收标准。
 
 ## 决策逻辑
 
