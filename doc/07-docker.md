@@ -17,7 +17,7 @@ MinIO 使用官方 `quay.io/minio/minio` 镜像。当前 OrbStack 配置的 Dock
 
 1. 复制 `.env.docker.example` 为 `.env.docker`，不要覆盖已有环境文件。
 2. 执行 `npm run docker:up`，API 容器会自动执行幂等迁移。
-3. 执行 `npm run docker:ps` 并按照根目录 `LOCAL_DEPLOYMENT.md` 完成账号初始化和验收。
+3. 执行 `npm run docker:ps` 并按照根目录 `PROJECT_DEPLOYMENT.md` 完成账号初始化和验收。
 
 演示账号统一使用 `Demo-SalesUp-2026!`，管理员账号由 `.env.docker` 中的 `ADMIN_*` 变量控制。演示数据是否导入应根据环境用途决定；生产环境不要执行演示种子脚本。
 
@@ -32,7 +32,7 @@ MinIO 使用官方 `quay.io/minio/minio` 镜像。当前 OrbStack 配置的 Dock
 
 `npm run docker:down`
 
-停止不会删除数据卷。PostgreSQL 与 MinIO 的实时数据使用 Docker 命名卷，不写入源码目录。清理本地开发数据前，必须明确执行 `docker compose --env-file .env.docker -f infra/docker-compose.yml down -v`。
+停止不会删除数据卷。PostgreSQL 与 MinIO 的实时数据使用 Docker 命名卷，不写入源码目录。清理本地部署数据前，必须明确执行 `docker compose --env-file .env.docker -f infra/docker-compose.yml down -v`。
 
 备份脚本默认将可恢复文件写入项目根目录的 `backups/postgres/` 和 `backups/minio/`。该目录不会提交到 Git。
 

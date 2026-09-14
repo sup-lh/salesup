@@ -1,6 +1,13 @@
 # 销售新人培养管理系统
 
-基于 React、NestJS、PostgreSQL 与 MinIO 的前后端分离应用。项目采用单仓库管理，前端、后端、共享契约与部署配置保持独立边界。
+基于 React、NestJS、PostgreSQL 与 MinIO 的销售新人培养管理系统。项目采用单仓库管理，前端、后端、共享契约与部署配置保持独立边界。
+
+## 系统模块
+
+- 新人端：工作台、闯关任务、课程考核、知识库、转正答辩。
+- 管理端：新人管理、任务与阶段配置、课程与题库、带教复盘、商机、答辩和数据看板。
+- 系统能力：本地账号、Session、角色权限、通知、文件存储和健康检查。
+- 部署服务：Nginx Web、NestJS API、PostgreSQL、MinIO。
 
 ## 目录结构
 
@@ -21,16 +28,7 @@
 
 PostgreSQL 和 MinIO 的实时数据由 Docker 命名卷管理，不存放在源码目录中。
 
-## 本地开发
-
-```bash
-npm install
-npm run dev
-```
-
-前端由 Vite 启动，`/api` 请求代理到本地 NestJS 服务。
-
-## 快速本地启动
+## 本地部署
 
 ```bash
 cp .env.docker.example .env.docker
@@ -38,15 +36,8 @@ npm run docker:up
 npm run docker:ps
 ```
 
-容器启动时会自动执行数据库迁移。首次启动后还需要创建管理员并按需导入演示数据，完整的判断逻辑、执行顺序、验收标准和故障处理见 [LOCAL_DEPLOYMENT.md](./LOCAL_DEPLOYMENT.md)。该文档也可直接交给 AI 编程 Agent 执行。
+容器启动时会自动执行数据库迁移。首次启动后还需要根据数据库状态决定是否创建管理员和导入演示数据。
+
+完整的模块说明、部署逻辑、验收标准和故障处理见 [PROJECT_DEPLOYMENT.md](./PROJECT_DEPLOYMENT.md)。该文档可直接交给 AI Agent 执行。
 
 停止容器执行 `npm run docker:down`，该命令不会删除数据卷。
-
-## 质量检查
-
-```bash
-npm run type:check
-npm run lint
-npm test -- --runInBand
-npm run build:prod
-```
