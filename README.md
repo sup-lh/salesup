@@ -33,10 +33,12 @@ npm run dev
 ## 快速本地启动
 
 ```bash
-npm run docker:bootstrap
+cp .env.docker.example .env.docker
+npm run docker:up
+npm run docker:ps
 ```
 
-无需 Node.js 时可执行 `./scripts/bootstrap-local.sh`。应用默认地址为 `http://localhost:8080`，脚本会自动迁移数据库、创建管理员并导入演示数据。完整步骤、账号、故障排查和生产边界见 [DEPLOYMENT.md](./DEPLOYMENT.md)。
+容器启动时会自动执行数据库迁移。首次启动后还需要创建管理员并按需导入演示数据，完整的判断逻辑、执行顺序、验收标准和故障处理见 [LOCAL_DEPLOYMENT.md](./LOCAL_DEPLOYMENT.md)。该文档也可直接交给 AI 编程 Agent 执行。
 
 停止容器执行 `npm run docker:down`，该命令不会删除数据卷。
 
