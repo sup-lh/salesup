@@ -30,15 +30,15 @@ npm run dev
 
 前端由 Vite 启动，`/api` 请求代理到本地 NestJS 服务。
 
-## Docker 完整环境
+## 快速本地启动
 
 ```bash
-cp .env.docker.example .env.docker
-npm run docker:up
-npm run docker:ps
+npm run docker:bootstrap
 ```
 
-应用默认地址为 `http://localhost:8080`。停止容器执行 `npm run docker:down`，该命令不会删除数据卷。
+无需 Node.js 时可执行 `./scripts/bootstrap-local.sh`。应用默认地址为 `http://localhost:8080`，脚本会自动迁移数据库、创建管理员并导入演示数据。完整步骤、账号、故障排查和生产边界见 [DEPLOYMENT.md](./DEPLOYMENT.md)。
+
+停止容器执行 `npm run docker:down`，该命令不会删除数据卷。
 
 ## 质量检查
 

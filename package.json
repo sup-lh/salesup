@@ -13,6 +13,7 @@
     "docker:up": "docker compose --env-file .env.docker -f infra/docker-compose.yml up -d --build",
     "docker:down": "docker compose --env-file .env.docker -f infra/docker-compose.yml down",
     "docker:ps": "docker compose --env-file .env.docker -f infra/docker-compose.yml ps",
+    "docker:bootstrap": "./scripts/bootstrap-local.sh",
     "gen:openapi": "echo 'UNSUPPORTED, SKIP'",
     "build": "./scripts/build.sh",
     "build:prod": "npm run build:server && npm run build:client",

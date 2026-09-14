@@ -15,11 +15,11 @@ MinIO 使用官方 `quay.io/minio/minio` 镜像。当前 OrbStack 配置的 Dock
 
 ## 启动
 
-1. 复制 `.env.docker.example` 为 `.env.docker`。
-2. 执行 `npm run docker:up`。
-3. 执行 `npm run docker:ps`。
+1. 执行 `npm run docker:bootstrap`（或不安装 Node.js 时执行 `./scripts/bootstrap-local.sh`）。
+2. 脚本会复制开发环境模板、启动容器、等待健康检查、创建管理员并导入演示数据。
+3. 日常查看状态执行 `npm run docker:ps`。
 
-需要演示数据时执行 `npm run db:seed-demo`。演示账号统一使用 `Demo-SalesUp-2026!`，生产环境不要执行该脚本。
+演示账号统一使用 `Demo-SalesUp-2026!`，管理员账号由 `.env.docker` 中的 `ADMIN_*` 变量控制。生产环境不要执行演示种子脚本。
 
 默认地址：
 

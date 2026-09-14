@@ -4,6 +4,7 @@
 
 ## 文档导航
 
+- [本地部署与 AI Agent 指南](../DEPLOYMENT.md)
 - [现状审计](./00-current-state.md)
 - [数据库表清单](./00-table-inventory.md)
 - [目标架构](./01-target-architecture.md)
